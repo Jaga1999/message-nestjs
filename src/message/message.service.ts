@@ -3,10 +3,7 @@ import { MessageRepository } from './message.repository';
 
 @Injectable()
 export class MessageService {
-  messageRepo: MessageRepository;
-  constructor() {
-    this.messageRepo = new MessageRepository();
-  }
+  constructor(public messageRepo: MessageRepository) {}
 
   async findOne(id: string) {
     return this.messageRepo.findOne(id);
