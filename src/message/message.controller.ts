@@ -1,4 +1,13 @@
-import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
+import { CreateMessageDto } from './dto/create-message.dto';
 
 @Controller('message')
 export class MessageController {
@@ -8,12 +17,13 @@ export class MessageController {
   }
 
   @Get('/:id')
-  getMessage(): string {
-    return 'Get Message';
+  getMessage(@Param('id') id: string): string {
+    return 'Get Message' + id;
   }
 
   @Post()
-  createMessage(): string {
+  createMessage(@Body() body: CreateMessageDto): string {
+    console.log(body);
     return 'Create New Message';
   }
 
